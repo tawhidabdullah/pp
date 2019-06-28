@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authAction";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import logo from "../../images/logo-code.png";
-import RentalSeachInput from "../rental/RentalSeachInput";
+import RentalSeachInput from "../rental/TopicSeachInput";
 
 // import CSS
 import "../../styles/header/_toolBar.scss";

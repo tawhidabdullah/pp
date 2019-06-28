@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchRentals } from "../../../actions/rentalAction";
-import RentalList from "./RentalList";
+import QuestionList from "./QuestionList";
 import ForumFilterListing from "./ForumFilterListing";
 
 
@@ -10,7 +10,7 @@ import ForumFilterListing from "./ForumFilterListing";
 import "../../../styles/rental/_rentalListing.scss";
 import "../../../styles/forum/_TopicForum_container.scss"; 
 
-class RentalSearchListing extends Component {
+class QuestionSearchListing extends Component {
 
     state = {
         searchedCity: ""
@@ -64,7 +64,7 @@ class RentalSearchListing extends Component {
                     <div className='TopicForum_container'>
                             <ForumFilterListing />
                         <div className='TopicForum_container-topics'>
-                        <RentalList rentals={this.props.rentals.data} />
+                        <QuestionList rentals={this.props.rentals.data} />
                         </div>
                     </div>
                 </section>
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps)(RentalSearchListing); 
+export default connect(mapStateToProps)(QuestionSearchListing); 

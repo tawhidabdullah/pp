@@ -1,57 +1,47 @@
 import React, { Component } from 'react';
 import  "../../styles/sass/main.scss";
-import AddNewRental from "../components/AddNewRental/AddNewRental";
+import AddNewQuestion from "../components/AddNewQuestion/AddNewQuestion";
 import UserProfile from "../components/UserProfile/UserProfile";
-import RentalsContent from "../components/RentalsContent/RentalsContent";
-import BookingsContent from "../components/BookingsContent/BookingsContent";
-import PendingBookings from "../components/PendingBookings/PendingBookings";
+import QuestionsContent from "../components/QuestionsContent/QuestionsContent";
+
+
 export default class Dashboard extends Component {
     state = {
-        isAddNewRental: false,
+        isAddNewQuestion: false,
         isUserProfile: true,
-        isRentals: false,
-        isBookings: false,
-        isPendings: false
+        isQuestions: false,
     };
 
 
-    renderAddNewRental = () => {
+    renderAddNewQuestion = () => {
         this.setState({
-            isAddNewRental: true,
+            isAddNewQuestion: true,
             isUserProfile: false,
-            isRentals: false,
-            isBookings: false,
-            isPendings: false
+            isQuestions: false
         })
     };
 
     renderUserProfile = () => {
         this.setState({
-            isAddNewRental: false,
+            isAddNewQuestion: false,
             isUserProfile: true,
-            isRentals: false,
-            isBookings: false,
-            isPendings: false
+            isQuestions: false
         })
     };
 
-    renderRentals = () => {
+    renderQuestions = () => {
         this.setState({
-            isAddNewRental: false,
+            isAddNewQuestion: false,
             isUserProfile: false,
-            isRentals: true,
-            isBookings: false,
-            isPendings: false
+            isQuestions: true
         })
     };
 
     renderBookings = () => {
         this.setState({
-            isAddNewRental: false,
+            isAddNewQuestion: false,
             isUserProfile: false,
-            isRentals: false,
-            isBookings: true,
-            isPendings: false
+            isQuestions: false,
         });
 
 
@@ -59,17 +49,15 @@ export default class Dashboard extends Component {
 
     renderPendingBookings = () => {
         this.setState({
-            isAddNewRental: false,
+            isAddNewQuestion: false,
             isUserProfile: false,
-            isRentals: false,
-            isBookings: false,
-            isPendings: true
+            isQuestions: false,
         });
     }
 
 
     render() {
-        const { isAddNewRental, isUserProfile, isRentals, isBookings, isPendings } = this.state;
+        const { isAddNewQuestion, isUserProfile, isQuestions } = this.state;
         return (
             <div class="container__of-dashboard">
                 {/* <header class="header">
@@ -99,45 +87,25 @@ export default class Dashboard extends Component {
                     <nav class="sidebar">
                         <ul class="side-nav">
                             <li
-                                class={isAddNewRental ?
+                                class={isAddNewQuestion ?
                                     "side-nav__item side-nav__item--active" :
                                     " side-nav__item"}
-                                onClick={this.renderAddNewRental}
+                                onClick={this.renderAddNewQuestion}
                             >
 
                                 <a href="#" class="side-nav__link">
                                     <i className='fa fa-edit' ></i>
-                                    <span class="side-nav__text">Add New Rental</span>
+                                    <span class="side-nav__text">Add New Question</span>
                                 </a>
                             </li>
-                            <li class={isRentals ?
+                            <li class={isQuestions ?
                                 "side-nav__item side-nav__item--active" :
                                 " side-nav__item"}
-                                onClick={this.renderRentals}
+                                onClick={this.renderQuestions}
                             >
                                 <a href="#" class="side-nav__link">
                                     <i className='fa fa-retweet'></i>
-                                    <span class="side-nav__text">Rentals</span>
-                                </a>
-                            </li>
-                            <li class={isBookings ?
-                                "side-nav__item side-nav__item--active" :
-                                " side-nav__item"}
-                                onClick={this.renderBookings}
-                            >
-                                <a href="#" class="side-nav__link">
-                                    <i className='fa fa-ticket' ></i>
-                                    <span class="side-nav__text">Bookings</span>
-                                </a>
-                            </li>
-                            <li class={isPendings ?
-                                "side-nav__item side-nav__item--active" :
-                                " side-nav__item"}
-                                onClick={this.renderPendingBookings}
-                            >
-                                <a href="#" class="side-nav__link">
-                                    <i className='fa fa-random'></i>
-                                    <span class="side-nav__text">Pendings</span>
+                                    <span class="side-nav__text">Questions</span>
                                 </a>
                             </li>
                             <li
@@ -157,11 +125,9 @@ export default class Dashboard extends Component {
                     </div>
                     </nav>
                     <main class="dashboard__main-content">
-                        {isAddNewRental ? <AddNewRental /> : ""}
+                        {isAddNewQuestion ? <AddNewQuestion /> : ""}
                         {isUserProfile ? <UserProfile /> : ""}
-                        {isRentals ? <RentalsContent /> : ""}
-                        {isBookings ? <BookingsContent /> : ""}
-                        {isPendings ? <PendingBookings /> : ""}
+                        {isQuestions ? <QuestionsContent /> : ""}
                     </main>
                 </div>
             </div>

@@ -28,14 +28,12 @@ import Rental from "../pages/rental/Rental";
 // import RentalSeachListing from "../pages/rental/RentalSeachListing";
 // import Error from "./pages/Error";
 
-import RentalDetail from "../components/rental/rentalDetail/RentalDetail";
-import RentalUpdate from "../components/rental/rentalDetail/RentalUpdate";
-import RentalSeachListing from "../components/rental/rental-Listing/RentalSeachListing";
-import RentalCreate from "../components/rental/rental-create/RentalCreate";
+import RentalDetail from "../components/rental/questionDetail/QuestionDetail";
+import RentalUpdate from "../components/rental/questionDetail/QuestionUpdate";
+import RentalSeachListing from "../components/rental/qustion-Listing/QuestionSeachListing";
+import RentalCreate from "../components/rental/question-create/QuestionCreate";
 
-// import Rental Manage and booking manage
-import RentalManage from "../components/rental/rental-manage/RentalManage";
-import BookingManage from "../components/booking/booking-manage/BookingManage";
+
 
 // import Dashboard
 import Dashboard from "../Dashboard/container/Dashboard";
@@ -108,11 +106,7 @@ class App extends Component {
                   path="/rentals/:city/homes"
                   component={RentalSeachListing}
                 />
-                <PrivateRoute
-                  exact
-                  path="/rentals/manage"
-                  component={RentalManage}
-                />
+              
                 <PrivateRoute
                   exact
                   path="/rentals/new"
@@ -128,13 +122,6 @@ class App extends Component {
                 {/* <Route component={Error} /> */}
               </Switch>
               <Switch />
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/bookings/manage"
-                  component={BookingManage}
-                />
-              </Switch>
             </main>
           </div>
           <Switch>

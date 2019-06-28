@@ -3,7 +3,7 @@ const Booking = require("../models/booking");
 const Rental = require("../models/rental")
 const mongooseError = require('../helpers/mongoose'); 
 const User = require("../models/user")
-
+ 
 // IMPORT KEYS 
 const config = require('../config/keys');   
 const stripe = require('stripe')(config.stripeSk);  

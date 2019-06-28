@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchRentals } from "../../../actions/rentalAction";
-import RentalList from "./RentalList";
+import RentalList from "./QuestionList";
 import ForumFilterListing from "./ForumFilterListing";
 
 
@@ -11,7 +11,7 @@ import ForumFilterListing from "./ForumFilterListing";
 import "../../../styles/rental/_rentalListing.scss";
 import "../../../styles/forum/_TopicForum_container.scss"
 
-class RentalListing extends Component {
+class QuestionListing extends Component {
 
     componentWillMount() {
         this.props.dispatch(fetchRentals());
@@ -41,4 +41,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps)(RentalListing); 
+export default connect(mapStateToProps)(QuestionListing); 

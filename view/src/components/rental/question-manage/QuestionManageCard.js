@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { toUpperCase, pritifyDate } from '../../../helpers';
-import RentalManageModal from "./RentalManageModal";
+import QuestionManageModal from "./QuestionManageModal";
 
-class RentalManageCard extends React.Component {
+class QuestionManageCard extends React.Component {
     state = {
         wantDelete: false
     };
@@ -33,7 +33,7 @@ class RentalManageCard extends React.Component {
                             Go to Rental
                         </Link>
                         {rental.bookings && rental.bookings.length > 0 ? (
-                            <RentalManageModal bookings={rental.bookings} />
+                            <QuestionManageModal bookings={rental.bookings} />
                         ) : ""
 
                         }
@@ -84,4 +84,4 @@ class RentalManageCard extends React.Component {
     }
 }
 
-export default RentalManageCard; 
+export default QuestionManageCard; 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from "react-responsive-modal";
 import { pritifyDate } from "../../../helpers/index";
-class RentalManageModal extends Component {
+class QuestionManageModal extends Component {
     state = {
         open: false
     }
@@ -59,7 +59,7 @@ class RentalManageModal extends Component {
 }
 
 
-export default RentalManageModal;
+export default QuestionManageModal;
 /*
 
 

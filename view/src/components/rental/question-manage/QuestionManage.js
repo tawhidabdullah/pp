@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { getUserRentals } from "../../../actions/rentalAction";
-import RentalManageCard from "./RentalManageCard";
+import QuestionManageCard from "./QuestionManageCard";
 import "../../../styles/rental/_rentalManage.scss";
 import { deleteRental } from "../../../actions/rentalAction";
 import { ToastContainer, toast } from "react-toastify";
 
-class RentalManage extends Component {
+class QuestionManage extends Component {
     state = {
         userRentals: [],
         errors: [],
@@ -21,7 +21,7 @@ class RentalManage extends Component {
 
     renderManageCard = (rentals) => {
         return rentals.map((rental, index) => {
-            return <RentalManageCard
+            return <QuestionManageCard
                 rentalIndex={index}
                 key={index}
                 rental={rental}
@@ -75,4 +75,4 @@ class RentalManage extends Component {
         )
     }
 }
-export default RentalManage; 
+export default QuestionManage; 

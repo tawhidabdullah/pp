@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toUpperCase, pritifyDate } from "../../../helpers/index";
-import RentalManageModal from "../../../components/rental/rental-manage/RentalManageModal";
+import QuestionManageModal from "../../../components/rental/question-manage/QuestionManageModal";
 
 export default class RentalCard extends Component {
   state = {
@@ -45,7 +45,7 @@ export default class RentalCard extends Component {
               Go to Rental
             </Link>
             {rental.bookings && rental.bookings.length > 0 ? (
-              <RentalManageModal bookings={rental.bookings} />
+              <QuestionManageModal bookings={rental.bookings} />
             ) : (
               ""
             )}

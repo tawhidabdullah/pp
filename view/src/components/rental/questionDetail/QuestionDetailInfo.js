@@ -1,9 +1,9 @@
 import React from 'react';
-import RentalAssets from "./RentalAssets";
+import RentalAssets from "./QuestionAssets";
 import { rentalType, toUpperCase } from "../../../helpers";
 import "../../../styles/rental/_rentalDetailInfo.scss"; 
 
-const RentalDetailInfo = ({ rental }) => {
+const QuestionDetailInfo = ({ rental }) => {
     const { title, city, category,  shared, description, bedrooms,user } = rental;
     return (
         <div className='rental'>
@@ -33,4 +33,4 @@ const RentalDetailInfo = ({ rental }) => {
     )
 }
 
-export default RentalDetailInfo; 
+export default QuestionDetailInfo; 

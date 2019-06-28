@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RentalCard from "./RentalCard";
+import QuestionCard from "./QuestionCard";
 import { deleteRental } from "../../../actions/rentalAction";
 import { toast } from "react-toastify";
 import { getUserRentals } from "../../../actions/rentalAction";
@@ -29,7 +29,7 @@ class RentalContent extends Component {
   renderManageCard = rentals => {
     return rentals.map((rental, index) => {
       return (
-        <RentalCard
+        <QuestionCard
           rentalIndex={index}
           key={index}
           rental={rental}

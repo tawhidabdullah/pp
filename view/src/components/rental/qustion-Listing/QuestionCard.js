@@ -3,7 +3,7 @@ import "../../../styles/forum/_forumCard.scss";
 import { Link } from "react-router-dom";
 import { rentalType } from "../../../helpers/index";
 
-const RentalCar = ({ rental }) => {
+const QuestionCard = ({ rental }) => {
   const { title, city, category, dailyRate, image, shared, _id, user } = rental;
   return (
     <section class="cards">
@@ -40,7 +40,7 @@ const RentalCar = ({ rental }) => {
   )
 }
 
-export default RentalCar;
+export default QuestionCard;
 
 
 /*

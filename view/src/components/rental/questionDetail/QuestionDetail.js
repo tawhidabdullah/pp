@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchRentalsById } from "../../../actions/rentalAction";
-import { getReviews } from "../../../actions/reviewAction";
-import RentalDetailInfo from "./RentalDetailInfo";
-import RentalMap from "./RentalMap";
-import Booking from "../../booking/Booking";
-import Review from "./Review";
+import QuestionDetailInfo from "./QuestionDetailInfo";
 
 
 
@@ -14,7 +10,7 @@ import Review from "./Review";
 import "../../../styles/rental/_rentalDetail.scss";
 
 
-class RentalDetail extends Component {
+class QuestionDetail extends Component {
     state = {
         reviews: [],
         isFetching: false,
@@ -25,16 +21,12 @@ class RentalDetail extends Component {
         const rentalId = this.props.match.params.id;
         this.props.dispatch(fetchRentalsById(rentalId))
             .then(rental => {
-                this.getBookingReviews(rental._id);
+                // this.getBookingReviews(rental._id);
             });
 
     };
 
-    getBookingReviews = (rentalId) => {
-        getReviews(rentalId).then((reviews) => {
-            this.setState({ reviews })
-        });
-    };
+ 
 
 
     render() {
@@ -51,16 +43,16 @@ class RentalDetail extends Component {
                                     <img src={`/${image}`} alt=''></img>
                                 </div>
                                 <div className='col-md-6'>
-                                    <RentalMap location={`${city}, ${street}`} />
+                                    get a life
                                 </div>
                             </div>
                         </div>
                         <div className='details-section'>
                             <div className='row'>
                                 <div className='col-md-8'>
-                                <RentalDetailInfo rental={rental} />
+                                <QuestionDetailInfo rental={rental} />
                                 </div>
-                                <div className='col-md-4'> <Booking rental={rental} /></div>
+                                
                             </div>
                         </div>
                         {reviews && reviews.length > 0 && (
@@ -68,11 +60,7 @@ class RentalDetail extends Component {
                                 <div className="col-md-8">
                                     <section style={{ marginBottom: '40px' }}>
                                         <h2>Reviews</h2>
-                                        {reviews.map((review, index) => {
-                                            return <Review
-                                                review={review}
-                                                key={index} />
-                                        })}
+                                       
                                     </section>
                                 </div>
                             </div>
@@ -94,7 +82,7 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps)(RentalDetail);
+export default connect(mapStateToProps)(QuestionDetail);
 
 
 

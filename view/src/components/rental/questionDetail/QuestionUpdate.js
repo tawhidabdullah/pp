@@ -4,11 +4,7 @@ import {
   fetchRentalsById,
   verifiyRentalOwner
 } from "../../../actions/rentalAction";
-import { getReviews } from "../../../actions/reviewAction";
-import RentalMap from "./RentalMap";
-import Booking from "../../booking/Booking";
-import Review from "./Review";
-import RentalAssets from "./RentalAssets";
+import QuestionAssets from "./QuestionAssets";
 import UserGuard from "../../auth/UserGuard";
 import { toUpperCase } from "../../../helpers/index";
 import { updateRental, resetRentalErrorr } from "../../../actions/rentalAction";
@@ -21,7 +17,7 @@ import "../../../styles/rental/_rentalDetailInfo.scss";
 // import css
 import "../../../styles/rental/_rentalDetail.scss";
 
-class RentalUpdate extends Component {
+class QuestionUpdate extends Component {
   state = {
     reviews: [],
     isFetching: false,
@@ -58,11 +54,6 @@ class RentalUpdate extends Component {
     this.verifyRentalOwner();
   }
 
-  getBookingReviews = rentalId => {
-    getReviews(rentalId).then(reviews => {
-      this.setState({ reviews });
-    });
-  };
 
   verifyRentalOwner = () => {
     const rentalId = this.props.match.params.id;
@@ -78,7 +69,7 @@ class RentalUpdate extends Component {
   };
   render() {
     const { rental, errors } = this.props;
-    const { image, _id, city, street, category, user, bedrooms } = rental;
+    const {  _id, category, user, bedrooms } = rental;
     const { reviews } = this.state;
     if (_id) {
       return (
@@ -100,7 +91,7 @@ class RentalUpdate extends Component {
                     />
                   </div>
                   <div className="col-md-6">
-                    <RentalMap location={`${city}, ${street}`} />
+                    Get a life
                   </div>
                 </div>
               </div>
@@ -200,12 +191,12 @@ class RentalUpdate extends Component {
                         resetErrors={this.resetRentalErrors}
                       />
                       <hr />
-                      <RentalAssets />
+                      <QuestionAssets />
                     </div>
                   </div>
                   <div className="col-md-4">
                     {" "}
-                    <Booking rental={rental} />
+                   
                   </div>
                 </div>
               </div>
@@ -214,9 +205,7 @@ class RentalUpdate extends Component {
                   <div className="col-md-8">
                     <section style={{ marginBottom: "40px" }}>
                       <h2>Reviews</h2>
-                      {reviews.map((review, index) => {
-                        return <Review review={review} key={index} />;
-                      })}
+                     
                     </section>
                   </div>
                 </div>
@@ -235,4 +224,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(RentalUpdate);
+export default connect(mapStateToProps)(QuestionUpdate);
