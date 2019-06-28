@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authAction";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
-import logo from "../../images/book-icon.png";
+import logo from "../../images/logo-code.png";
 import RentalSeachInput from "../rental/RentalSeachInput";
 
 // import CSS

@@ -75,6 +75,10 @@
         -ms-flex-positive: 1;
             flex-grow: 1;
   }
+
+  .form__input {
+    border: 1px solid #eee; 
+  }
   
   /* modules/search.css */
   
@@ -119,19 +123,19 @@
   }
   
   .rental__search input[type="submit"] {
-    background-color: #1bba9a;
-    color: #fff;
+    background-color: transparent;
+    border: 1px solid #ecf1f9; 
+    color: #1bba9a;
     font-size: 13px;
     font-weight: 500;
     margin-left: 8px;
     margin-left: .5rem;
-    padding: 6px 18px;
-    padding: .400rem .625rem;
+    padding: 3px 14px;
     letter-spacing: 1px;
   }
   
   .rental__search input[type="submit"]:focus,
   .rental__search input[type="submit"]:hover {
-    background-color: #189e83;
+    background-color: #ecf1f9;
   }
   
