@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "../../../styles/rental/_rentalCreateFormStyle.scss";
-import { createRental } from "../../../actions/rentalAction";
+import { createRental } from "../../../actions/questionAction";
 import { Redirect } from "react-router-dom";
 import Upload from "../../FileUpload/test";
 

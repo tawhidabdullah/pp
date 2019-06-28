@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import QuestionCard from "./QuestionCard";
-import { deleteRental } from "../../../actions/rentalAction";
+import { deleteRental } from "../../../actions/questionAction";
 import { toast } from "react-toastify";
-import { getUserRentals } from "../../../actions/rentalAction";
+import { getUserRentals } from "../../../actions/questionAction";
 import Spinner from "../../../components/commonFeilds/Spinner";
 import Error from "../../../pages/Error";
 

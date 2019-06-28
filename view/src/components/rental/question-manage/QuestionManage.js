@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { getUserRentals } from "../../../actions/rentalAction";
+import { getUserQuestions } from "../../../actions/questionAction";
 import QuestionManageCard from "./QuestionManageCard";
 import "../../../styles/rental/_rentalManage.scss";
-import { deleteRental } from "../../../actions/rentalAction";
+import { deleteQuestion } from "../../../actions/questionAction";
 import { ToastContainer, toast } from "react-toastify";
 
 class QuestionManage extends Component {
@@ -13,7 +13,7 @@ class QuestionManage extends Component {
         isFetching: false
     }
     componentWillMount() {
-        getUserRentals().then(
+        getUserQuestions().then(
             (userRentals) => { this.setState({ ...this.state, userRentals, isFetching: false }) },
             (errors) => { this.setState({ ...this.state, errors, isFetching: false }) }
         );
@@ -31,7 +31,7 @@ class QuestionManage extends Component {
     }
 
     deleteRentalById = (rentalId, rentalIndex) => {
-        deleteRental(rentalId).then(() => {
+        deleteQuestion(rentalId).then(() => {
             this.deleteRentalFromList(rentalIndex);
         }, (errors) => {
             // Toast.errors(errors[0].detail); 

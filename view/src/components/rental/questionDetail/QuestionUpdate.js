@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  fetchRentalsById,
-  verifiyRentalOwner
-} from "../../../actions/rentalAction";
+  fetchQuestionsById,
+  verifiyQuestionOwner
+} from "../../../actions/questionAction";
 import QuestionAssets from "./QuestionAssets";
 import UserGuard from "../../auth/UserGuard";
 import { toUpperCase } from "../../../helpers/index";
-import { updateRental, resetRentalErrorr } from "../../../actions/rentalAction";
+import { updateQuestion, resetQuestionErrorr } from "../../../actions/questionAction";
 import EditableInput from "../../commonFeilds/editable/EditableInput";
 import EditableTextArea from "../../commonFeilds/editable/EditableTextArea";
 import EditableSelect from "../../commonFeilds/editable/EditableSelect";
@@ -33,20 +33,20 @@ class QuestionUpdate extends Component {
        
     if(Object.keys(rentalData)[0] === 'image'){
       formData.append("image",rentalData.image); 
-     return dispatch(updateRental(formData, _id));
+     return dispatch(updateQuestion(formData, _id));
     }
-    dispatch(updateRental(rentalData, _id));
+    dispatch(updateQuestion(rentalData, _id));
    
   };
 
   resetRentalErrors = () => {
-    this.props.dispatch(resetRentalErrorr());
+    this.props.dispatch(resetQuestionErrorr());
   };
 
   componentWillMount() {
     const rentalId = this.props.match.params.id;
-    this.props.dispatch(fetchRentalsById(rentalId)).then(rental => {
-      this.getBookingReviews(rental._id);
+    this.props.dispatch(fetchQuestionsById(rentalId)).then(rental => {
+      // this.getBookingReviews(rental._id);
     });
   }
 
@@ -58,7 +58,7 @@ class QuestionUpdate extends Component {
   verifyRentalOwner = () => {
     const rentalId = this.props.match.params.id;
     this.setState({ isFetching: true });
-    return verifiyRentalOwner(rentalId).then(
+    return verifiyQuestionOwner(rentalId).then(
       () => {
         this.setState({ isFetching: false, isAllowed: true });
       },

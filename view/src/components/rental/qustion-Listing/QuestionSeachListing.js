@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchRentals } from "../../../actions/rentalAction";
+import { fetchQuestions } from "../../../actions/questionAction";
 import QuestionList from "./QuestionList";
 import ForumFilterListing from "./ForumFilterListing";
 
@@ -32,7 +32,7 @@ class QuestionSearchListing extends Component {
         this.setState({
             searchedCity
         })
-        this.props.dispatch(fetchRentals(searchedCity));
+        this.props.dispatch(fetchQuestions(searchedCity));
     }
 
     renderTitle = () => {

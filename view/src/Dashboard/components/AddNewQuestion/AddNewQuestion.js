@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createRental } from "../../../actions/rentalAction";
+import { createRental } from "../../../actions/questionAction";
 import { Redirect } from "react-router-dom";
 import Upload from "../../../components/FileUpload/test";
 

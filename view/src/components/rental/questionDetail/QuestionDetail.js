@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchRentalsById } from "../../../actions/rentalAction";
+import { fetchQuestionsById } from "../../../actions/questionAction";
 import QuestionDetailInfo from "./QuestionDetailInfo";
 
 
@@ -19,7 +19,7 @@ class QuestionDetail extends Component {
     }
     componentWillMount() {
         const rentalId = this.props.match.params.id;
-        this.props.dispatch(fetchRentalsById(rentalId))
+        this.props.dispatch(fetchQuestionsById(rentalId))
             .then(rental => {
                 // this.getBookingReviews(rental._id);
             });

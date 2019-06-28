@@ -1,43 +1,43 @@
 import axios from "axios";
 import {
-  FETCH_RENTALS_SUCCESS,
-  FETCH_RENTAL_BY_ID_SUCCESS,
-  FETCH_RENTALS_FAIL,
-  FETCH_RENTALS_INIT,
-  UPDATE_RENTAL_SUCCESS,
-  UPDATE_RENTAL_FAIL,
-  RESET_RENTAL_ERRORS
+  FETCH_QUESTIONS_SUCCESS,
+  FETCH_QUESTION_BY_ID_SUCCESS,
+  FETCH_QUESTIONS_FAIL,
+  FETCH_QUESTIONS_INIT,
+  UPDATE_QUESTION_SUCCESS,
+  UPDATE_QUESTION_FAIL,
+  RESET_QUESTION_ERRORS
 } from "./types";
 
 
 // FETCH RENTAL AND RENTALS  //////////////////////////////////////////////////////
 
 
-const fetchRentalsInit = () => {
+const fetchQuestionsInit = () => {
   return {
-    type: FETCH_RENTALS_INIT,
+    type: FETCH_QUESTIONS_INIT,
   };
 };
 
-const fetchRentalsFail = (errors) => {
+const fetchQuestionsFail = (errors) => {
   return {
-    type: FETCH_RENTALS_FAIL,
+    type: FETCH_QUESTIONS_FAIL,
     errors
   }
 }
 
 
-const fetchRentalsByIdSuccess = (rental) => {
+const fetchQuestionsByIdSuccess = (rental) => {
   return {
-    type: FETCH_RENTAL_BY_ID_SUCCESS,
+    type: FETCH_QUESTION_BY_ID_SUCCESS,
     rental
   }
 }
 
-const fetchRentalsSuccess = (rentals) => {
+const fetchQuestionsSuccess = (rentals) => {
 
   return {
-    type: FETCH_RENTALS_SUCCESS,
+    type: FETCH_QUESTIONS_SUCCESS,
     rentals
   }
 
@@ -45,24 +45,24 @@ const fetchRentalsSuccess = (rentals) => {
 
 
 
-export const fetchRentals = (city) => dispatch => {
-  dispatch(fetchRentalsInit())
+export const fetchQuestions = (city) => dispatch => {
+  dispatch(fetchQuestionsInit())
   const url = city ? `/api/rentals?city=${city}` : "/api/rentals";
   axios.get(url)
     .then(rentals => rentals.data)
     .then((rentals) => {
-      return dispatch(fetchRentalsSuccess(rentals));
+      return dispatch(fetchQuestionsSuccess(rentals));
     })
     .catch(({
       response
     }) => {
-      return dispatch(fetchRentalsFail(response.data.errors));
+      return dispatch(fetchQuestionsFail(response.data.errors));
     })
 }
 
 
 
-export const createRental = (newRental) => {
+export const createQuestion = (newRental) => {
   return axios.post('/api/rentals', newRental)
     .then(res => res.data)
     .catch(({
@@ -74,19 +74,19 @@ export const createRental = (newRental) => {
 
 
 
-export const fetchRentalsById = (id) => {
+export const fetchQuestionsById = (id) => {
   return function (dispatch) {
     return axios.get(`/api/rentals/${id}`)
       .then(rental => rental.data)
       .then(rental => {
-        dispatch(fetchRentalsByIdSuccess(rental));
+        dispatch(fetchQuestionsByIdSuccess(rental));
         return rental;
       })
   }
 
 }; 
 
-export const fetchRentalImg = (rentalId) => {
+export const fetchQuestionImg = (rentalId) => {
   return axios.get(`/api/rentals/${rentalId}/image`)
     .then(res => res.data)
     .catch(({
@@ -95,7 +95,7 @@ export const fetchRentalImg = (rentalId) => {
 };
 
 
-export const verifiyRentalOwner = (id) => {
+export const verifiyQuestionOwner = (id) => {
   return axios.get(`/api/rentals/${id}/verify-user`); 
 }
 
@@ -105,7 +105,7 @@ export const verifiyRentalOwner = (id) => {
 
 // GET USER RENTALS RENTAL //////////////////////////////////////////////////////
 
-export const getUserRentals = () => {
+export const getUserQuestions = () => {
   return axios.get('/api/rentals/manage')
     .then(res => res.data)
     .catch(({
@@ -115,7 +115,7 @@ export const getUserRentals = () => {
 
 // DELETE RENTAL //////////////////////////////////////////////////////////////////
 
-export const deleteRental = (rentalId) => {
+export const deleteQuestion = (rentalId) => {
   return axios.delete(`/api/rentals/${rentalId}`)
     .then(res => res.data)
     .catch(({
@@ -127,37 +127,37 @@ export const deleteRental = (rentalId) => {
 // UPDATE RENTAL //////////////////////////////////////////////////////////////////
 
 
-const updateRentalSuccess = (updatedRental) => {
+const updateQuestionSuccess = (updatedRental) => {
   return {
-    type: UPDATE_RENTAL_SUCCESS,
+    type: UPDATE_QUESTION_SUCCESS,
     rental: updatedRental
   }
 };
 
-const updateRentalFail = (errors) => {
+const updateQuestionFail = (errors) => {
   return {
-    type: UPDATE_RENTAL_FAIL,
+    type: UPDATE_QUESTION_FAIL,
     errors
   }
 };
 
 
-export const updateRental = (rentalData, id ) => dispatch => {
+export const updateQuestion = (rentalData, id ) => dispatch => {
   let formData = rentalData;
   console.log("formData",formData); 
   return axios.patch(`/api/rentals/${id}`, formData)
     .then(res => res.data)
-    .then(updatedRental => dispatch(updateRentalSuccess(updatedRental)))
+    .then(updatedRental => dispatch(updateQuestionSuccess(updatedRental)))
     .catch(({
       response
     }) => {
-      return dispatch(updateRentalFail(response.data));
+      return dispatch(updateQuestionFail(response.data));
     })
 }; 
 
 
-export const resetRentalErrorr  = () => {
+export const resetQuestionErrorr  = () => {
   return {
-    type: RESET_RENTAL_ERRORS
+    type: RESET_QUESTION_ERRORS
   }
 }

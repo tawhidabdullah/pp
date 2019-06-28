@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchRentals } from "../../../actions/rentalAction";
+import { fetchQuestions } from "../../../actions/questionAction";
 import RentalList from "./QuestionList";
 import ForumFilterListing from "./ForumFilterListing";
 
@@ -14,7 +14,7 @@ import "../../../styles/forum/_TopicForum_container.scss"
 class QuestionListing extends Component {
 
     componentWillMount() {
-        this.props.dispatch(fetchRentals());
+        this.props.dispatch(fetchQuestions());
     }
     render() {
         return (

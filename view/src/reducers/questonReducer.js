@@ -39,7 +39,7 @@ export const rentalReducer = (state = initialState.rentals, action) => {
     };
 };
 
-export const selectedRentalReducer = (state = initialState.rental, action) => {
+export const selectedQuestionReducer = (state = initialState.rental, action) => {
     switch (action.type) {
         case FETCH_RENTAL_BY_ID_SUCCESS:
             return {

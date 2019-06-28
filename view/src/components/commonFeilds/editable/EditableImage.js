@@ -2,7 +2,7 @@ import React from "react";
 import EditableComponent from "./EditableComponent";
 import "../../../styles/rental/_editableComponent.scss";
 import Upload from "../../FileUpload/test";
-import { fetchRentalImg } from "../../../actions/rentalAction";
+import { fetchRentalImg } from "../../../actions/questionAction";
 
 class EditableImage extends EditableComponent {
   handleImageUpload = image => {
