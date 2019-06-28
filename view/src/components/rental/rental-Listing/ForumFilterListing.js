@@ -1,8 +1,29 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import "../../../styles/forum/_forumFilter.scss";
+import { NavLink } from "react-router-dom";
 
 class ForumFilterListing extends Component {
+
     render() {
+        const mostDiscussedTopics = ['bangladesh', 'Fsadf'];
+
+        const renderMostDiscussedTopic = mostDiscussedTopics.map(topic => {
+            return (
+
+                <NavLink
+                    activeStyle={{
+                        background: "#eee",
+                        display: "block"
+                    }}
+                    className='rental-detail-link'
+                    to={`/rentals/${topic}/homes`}>
+                    <li>
+                        <span class="lbl padding-8">{topic}</span>
+                    </li>
+                </NavLink>
+
+            )
+        })
         return (
             <div class="containerOfCheckBox clearfix">
                 <div class="half-col">
@@ -12,7 +33,7 @@ class ForumFilterListing extends Component {
                     <form style={{
                         width: "100%"
                     }}>
-                    <div class="searchTopicInput_container">
+                        <div class="searchTopicInput_container">
                             <input
                                 type="text"
                                 name="searchTopicInput"
@@ -23,32 +44,9 @@ class ForumFilterListing extends Component {
                             </span>
                         </div>
                         <ul>
-                            <li>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span class="lbl padding-8">Aparment</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span class="lbl padding-8">House</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span class="lbl padding-8">Cottege</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span class="lbl padding-8">Hotel</span>
-                                </label>
-                            </li>
+                            {renderMostDiscussedTopic}
                         </ul>
-                        
+
                     </form>
                 </div>
             </div>

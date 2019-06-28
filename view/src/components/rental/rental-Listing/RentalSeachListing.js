@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchRentals } from "../../../actions/rentalAction";
 import RentalList from "./RentalList";
+import ForumFilterListing from "./ForumFilterListing";
 
 
 
 // IMPORT CSS
 import "../../../styles/rental/_rentalListing.scss";
-
+import "../../../styles/forum/_TopicForum_container.scss"; 
 
 class RentalSearchListing extends Component {
 
@@ -55,12 +56,17 @@ class RentalSearchListing extends Component {
         // console.log(this.props);
         return (
 
-            <div className='container' style={{
+            <div className='conainer' style={{
                 paddingTop: "80px"
             }}>
-                <section id='rentalListing'>
-                    {this.renderTitle()}
-                    <RentalList rentals={this.props.rentals.data} />
+                 <section id='rentalListing'>
+                 {this.renderTitle()}
+                    <div className='TopicForum_container'>
+                            <ForumFilterListing />
+                        <div className='TopicForum_container-topics'>
+                        <RentalList rentals={this.props.rentals.data} />
+                        </div>
+                    </div>
                 </section>
             </div>
         )
