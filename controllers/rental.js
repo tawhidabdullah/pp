@@ -81,13 +81,12 @@ exports.get_single_rental_by_id_verify_user = (req, res) => {
 exports.getRental_OR_getRentalsByQueryCity = (req, res) => {
 
     const city = req.query.city;
-    const query = city ? {
+    const query = city ? {  
         city: city.toLowerCase()
     } : {};
-
     Rental.find(query)
         .populate('user')
-        .select('-bookings')
+        .select('-bookings') 
         .exec((err, foundRentals) => {
             if (err) {
                 return res.status(404).send({

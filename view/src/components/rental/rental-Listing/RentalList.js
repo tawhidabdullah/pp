@@ -17,7 +17,7 @@ class RentalList extends Component {
 
     render() {
         return (
-            <div className='row'>
+            <div className='rw'>
                 {this.rentalMapList()}
             </div>
         )

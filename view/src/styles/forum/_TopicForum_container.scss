@@ -1,9 +1,25 @@
 .TopicForum_container {
     // background: green;
     display: flex; 
-
-    &-topics {
-        
-    }
-
+    padding-left: 80px;
 }
+
+@media only screen and (max-width: 765px) {
+    .TopicForum_container {
+        // background: green;
+        display: flex; 
+        flex-direction: column; 
+    }
+}; 
+
+
+@media only screen and (max-width: 913px) {
+    .TopicForum_container {
+        padding-left: 10px;
+    }
+}; 
+
+
+
+
+

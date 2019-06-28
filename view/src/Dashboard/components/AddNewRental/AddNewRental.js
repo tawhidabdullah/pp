@@ -179,53 +179,7 @@ class AddNewRental extends Component {
               </button>
             </form>
           </div>
-          <div class="detail__user-reviews">
-            <div class="containerOfCheckBox clearfix">
-              <div class="half-col">
-                <header>
-                  <h6>Category</h6>
-                </header>
-                <form>
-                  <ul>
-                    <li>
-                      <label>
-                        <input type="checkbox" />
-                        <span class="lbl padding-8">Aparment</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input type="checkbox" />
-                        <span class="lbl padding-8">House</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input type="checkbox" />
-                        <span class="lbl padding-8">Cottege</span>
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input type="checkbox" />
-                        <span class="lbl padding-8">Hotel</span>
-                      </label>
-                    </li>
-                  </ul>
-                  <div class="addcategory">
-                    <input
-                      type="text"
-                      name="addCategory"
-                      placeholder="add category"
-                    />
-                    <span className="addcategory__icon">
-                      <i className="fa fa-plus" />
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+
         </div>
       </>
     );

@@ -19,11 +19,9 @@ class RentalListing extends Component {
     render() {
         return (
 
-            <div className='container' style={{
-                paddingTop: "80px"
-            }}>
+            <div className='conainer'>
                 <section id='rentalListing'>
-                    <h1 className='page-title'>Problems and programming </h1>
+                    {/* <h1 className='page-title'>Problems and programming </h1> */}
                     <div className='TopicForum_container'>
                             <ForumFilterListing />
                         <div className='TopicForum_container-topics'>

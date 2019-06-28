@@ -16,7 +16,7 @@ class ForumFilterListing extends Component {
                             <input
                                 type="text"
                                 name="searchTopicInput"
-                                placeholder="Search for javascript,Python"
+                                placeholder="Search for Topics"
                             />
                             <span className="searchTopicInput_container__icon">
                                 <i className="fa fa-search" />
