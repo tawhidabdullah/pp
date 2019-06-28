@@ -86,6 +86,7 @@ exports.getRental_OR_getRentalsByQueryCity = (req, res) => {
     } : {};
 
     Rental.find(query)
+        .populate('user')
         .select('-bookings')
         .exec((err, foundRentals) => {
             if (err) {

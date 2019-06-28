@@ -7,13 +7,43 @@ section.cards {
     margin: auto; 
 
 }
+.rental-detail-link{
+    text-decoration: none; 
+    color: inherit; 
+    &:hover{
+        text-decoration: none; 
+        color: inherit; 
+    }
+}
 
 .forumCard {
+    position: relative; 
     display: flex;
     transition: all 0.25s ease;
     border-right: 1px solid rgb(243, 243, 243);
     border-left: 1px solid rgb(243, 243, 243);
     border-top: 1px solid rgb(243, 243, 243);
+
+}
+
+
+
+.forumCard__userimg {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.forumCard__Question-owner{
+    position: absolute; 
+    padding: 15px 20px;
+
+    span {
+        font-size: 12px;
+        opacity: 0.8;
+        display: inline-block; 
+        padding: 5px;
+    }
 }
 
 

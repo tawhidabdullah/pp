@@ -4,28 +4,37 @@ import { Link } from "react-router-dom";
 import { rentalType } from "../../../helpers/index";
 
 const RentalCar = ({ rental }) => {
-  const { title, city, category, dailyRate, image, shared, _id } = rental;
+  const { title, city, category, dailyRate, image, shared, _id, user } = rental;
   return (
     <section class="cards">
-      <article class="reverse-horizontal forumCard" style={{
-        background: "#fff"
-      }}>
-        {/* <img class="forumCard__img" src="https://picsum.photos/256/196/?image=161" class="forumCard__image" /> */}
-        <div class="forumCard__content">
-          <div class="forumCard__type">article</div>
-          <div class="forumCard__title">
-            Test Post: Electric Boogaloo
+      <Link className='rental-detail-link' to={`/rentals/${_id}`}>
+        <article class="reverse-horizontal forumCard" style={{
+          background: "#fff"
+        }}>
+
+          <div className='forumCard__Question-owner'>
+            <img className="forumCard__userimg" src={user.avatar} />
+            <span>{user.name}</span>
           </div>
-          <div class="forumCard__date">14 March 2011 &middot; 5 min read</div>
-          <div class="forumCard__excerpt">
-            This is a test article, in a perculiar context, to see whether grid and flexbox works to make a blog...
+
+          <div class="forumCard__content">
+            <div class="forumCard__type">1 answer</div>
+            <div class="forumCard__title">
+              {title}
+            </div>
+            <div class="forumCard__date">14 March 2011 &middot; 5 min read</div>
+            <div class="forumCard__excerpt">
+              This is a test article, in a perculiar context, to see whether grid and flexbox works to make a blog...
           </div>
-          <div class="forumCard__tags">
-            <div class="tag"><i class="fa fa-tag"></i>test</div>
-            <div class="tag"><i class="fa fa-tag"></i>test</div>
+            <div class="forumCard__tags">
+              <div class="tag"><i class="fa fa-tag"></i>{`${category}`}</div>
+              <div class="tag"><i class="fa fa-tag"></i>{`${category}`}</div>
+
+            </div>
+
           </div>
-        </div>
-      </article>
+        </article>
+      </Link>
     </section>
 
   )

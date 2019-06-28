@@ -7,7 +7,7 @@ class ForumFilterListing extends Component {
             <div class="containerOfCheckBox clearfix">
                 <div class="half-col">
                     <header>
-                        <h6>Category</h6>
+                        <h6>Most Discussed Categories</h6>
                     </header>
                     <form style={{
                         width: "100%"
