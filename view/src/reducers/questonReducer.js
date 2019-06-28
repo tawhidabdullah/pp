@@ -1,11 +1,11 @@
 import {
-    FETCH_RENTALS_SUCCESS,
-    FETCH_RENTAL_BY_ID_SUCCESS,
-    FETCH_RENTALS_INIT,
-    FETCH_RENTALS_FAIL,
-    UPDATE_RENTAL_SUCCESS,
-    UPDATE_RENTAL_FAIL,
-    RESET_RENTAL_ERRORS
+    FETCH_QUESTIONS_SUCCESS,
+    FETCH_QUESTION_BY_ID_SUCCESS,
+    FETCH_QUESTIONS_INIT,
+    FETCH_QUESTIONS_FAIL,
+    UPDATE_QUESTION_SUCCESS,
+    UPDATE_QUESTION_FAIL,
+    RESET_QUESTION_ERRORS
 } from "../actions/types";
 
 
@@ -20,17 +20,17 @@ const initialState = {
     } 
 }
 
-export const rentalReducer = (state = initialState.rentals, action) => {
+export const questionReducer = (state = initialState.rentals, action) => {
     switch (action.type) {
-        case FETCH_RENTALS_SUCCESS:
+        case FETCH_QUESTIONS_SUCCESS:
             return {
                 ...state, data: action.rentals
             };
-        case FETCH_RENTALS_INIT:
+        case FETCH_QUESTIONS_INIT:
             return {
                 ...state, data: [], errors: []
             };
-        case FETCH_RENTALS_FAIL:
+        case FETCH_QUESTIONS_FAIL:
             return {
                 ...state, data: [], errors: action.errors
             }
@@ -41,19 +41,19 @@ export const rentalReducer = (state = initialState.rentals, action) => {
 
 export const selectedQuestionReducer = (state = initialState.rental, action) => {
     switch (action.type) {
-        case FETCH_RENTAL_BY_ID_SUCCESS:
+        case FETCH_QUESTION_BY_ID_SUCCESS:
             return {
                 ...state, data: action.rental
             };
-        case UPDATE_RENTAL_SUCCESS:
+        case UPDATE_QUESTION_SUCCESS:
             return {
                 ...state, data: action.rental
             };
-        case UPDATE_RENTAL_FAIL:
+        case UPDATE_QUESTION_FAIL:
             return {
                 ...state, errors: action.errors
             };
-        case RESET_RENTAL_ERRORS:
+        case RESET_QUESTION_ERRORS:
             return {
                 ...state, errors: []
             };

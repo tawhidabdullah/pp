@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import QuestionCard from "./QuestionCard";
-import { deleteRental } from "../../../actions/questionAction";
+import { deleteQuestion } from "../../../actions/questionAction";
 import { toast } from "react-toastify";
-import { getUserRentals } from "../../../actions/questionAction";
+import { getUserQuestions } from "../../../actions/questionAction";
 import Spinner from "../../../components/commonFeilds/Spinner";
 import Error from "../../../pages/Error";
 
 import "../../../styles/sass/components/_searchInput.scss";
 import "../../../styles/sass/components/Dashboard/_RentalsContent.scss";
 
-class RentalContent extends Component {
+class QuestionContent extends Component {
   state = {
     userRentals: [],
     errors: [],
     isFetching: true
   };
   componentWillMount() {
-    getUserRentals().then(
+    getUserQuestions().then(
       userRentals => {
         this.setState({ ...this.state, userRentals, isFetching: false });
       },
@@ -40,7 +40,7 @@ class RentalContent extends Component {
   };
 
   deleteRentalById = (rentalId, rentalIndex) => {
-    deleteRental(rentalId).then(
+    deleteQuestion(rentalId).then(
       () => {
         this.deleteRentalFromList(rentalIndex);
       },
@@ -95,4 +95,4 @@ class RentalContent extends Component {
   }
 }
 
-export default RentalContent;
+export default QuestionContent;

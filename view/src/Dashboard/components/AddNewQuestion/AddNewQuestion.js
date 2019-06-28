@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createRental } from "../../../actions/questionAction";
+import { createQuestion } from "../../../actions/questionAction";
 import { Redirect } from "react-router-dom";
 import Upload from "../../../components/FileUpload/test";
 
@@ -63,7 +63,7 @@ class AddNewRental extends Component {
     formData.append("dailyRate", this.state.dailyRate);
     formData.append("bedrooms", this.state.bedrooms);
 
-    createRental(formData).then(
+    createQuestion(formData).then(
       rental => {
         this.setState({
           redirect: true

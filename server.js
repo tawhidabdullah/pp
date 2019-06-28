@@ -6,13 +6,9 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 
 // importing the router of USERS
-const usersRoutes = require("./routes/api/users");
+const usersRoutes = require("./routes/api/users");   
 const profileRoutes = require("./routes/api/profile");
-const rentalRoutes = require("./routes/api/rental");
-const bookingRoutes = require("./routes/api/bookings");
-const reviewRoutes = require("./routes/api/reviews");
-const paymentRoutes = require("./routes/api/payments");
-
+const questionRoutes = require("./routes/api/question");
 
 // initialize app
 const app = express();
@@ -55,10 +51,8 @@ require("./config/passport")(passport);
 
 app.use("/api/users", usersRoutes); // use Router() =>middleware (const router = express.Router());
 app.use("/api/profile", profileRoutes);
-app.use("/api/rentals", rentalRoutes);
-app.use("/api/bookings", bookingRoutes);
-app.use("/api/reviews", reviewRoutes);
-app.use("/api/payments", paymentRoutes);
+app.use("/api/rentals", questionRoutes);
+
 
 // if production then server statice production
 if (process.env.NODE_ENV === "production") {

@@ -5,7 +5,7 @@ import {
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import {
-  questonReducer,
+  questionReducer,
   selectedQuestionReducer
 } from "./questonReducer";
 
@@ -14,6 +14,6 @@ import {
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  rentals: questonReducer,
+  rentals: questionReducer,
   rental: selectedQuestionReducer,
 });

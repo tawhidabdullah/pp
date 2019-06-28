@@ -9,7 +9,7 @@ const validateupdateRentalInput = require("../validation/updateRental");
 const mongooseError = require("../helpers/mongoose")   
 
 
-exports.get_single_rental_by_id = (req, res) => {
+exports.get_single_question_by_id = (req, res) => {
     const rentalId = req.params.id; 
 
     Rental.findById(rentalId)
@@ -29,7 +29,7 @@ exports.get_single_rental_by_id = (req, res) => {
         })
 };
 
-exports.getimgofARental = (req,res) => {
+exports.getimgofAQuestion = (req,res) => {
     const rentalId = req.params.id; 
    
     Rental.findById(rentalId)
@@ -49,7 +49,7 @@ exports.getimgofARental = (req,res) => {
 }
 
 
-exports.get_single_rental_by_id_verify_user = (req, res) => {
+exports.get_single_question_by_id_verify_user = (req, res) => {
     const user = req.user.id;
 
     Rental.findById(req.params.id)
@@ -78,7 +78,7 @@ exports.get_single_rental_by_id_verify_user = (req, res) => {
 
 
 
-exports.getRental_OR_getRentalsByQueryCity = (req, res) => {
+exports.getQuestion_OR_getQuestionsByQueryCity = (req, res) => {
 
     const city = req.query.city;
     const query = city ? {  
@@ -116,7 +116,7 @@ exports.getRental_OR_getRentalsByQueryCity = (req, res) => {
 
 
 
-exports.createRental = (req, res) => {
+exports.createQuestion = (req, res) => {
     // bringing the validations : error , isValid
     const {
         errors,
@@ -188,7 +188,7 @@ exports.createRental = (req, res) => {
 };
 
 
-exports.deleteRental = (req, res) => {
+exports.deleteQuestion = (req, res) => {
     const user = req.user.id;
     Rental.findById(req.params.id)
         .populate("user", '_id')
@@ -242,13 +242,12 @@ exports.deleteRental = (req, res) => {
         })
 };
 
-exports.manageRentals = (req, res) => {
+exports.manageQuestions = (req, res) => {
     const user = req.user.id;
 
     Rental.where({
         user
     })
-        .populate('bookings')
         .exec((err, rentals) => {
             if (err) {
                 return res.status(422).send({
@@ -260,7 +259,7 @@ exports.manageRentals = (req, res) => {
 };
 
 
-exports.updateRental = (req, res) => {
+exports.updateQuestion = (req, res) => {
    
    
     const rentalBody = Object.assign({},req.body); 
