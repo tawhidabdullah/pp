@@ -1,0 +1,167 @@
+.containerOfCheckBox {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    width: 140%; 
+    margin-bottom: 40px;
+}
+
+.containerOfCheckBox header {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #DDD;
+
+}
+
+.half-col {
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding-bottom: 7px;
+    background: #fff;
+    color: rgb(92, 92, 92);
+    border-radius: .625rem;
+    box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
+}
+
+
+
+.half-col header h6 {
+    font-weight: 500;
+    color: rgb(92, 92, 92);
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+}
+
+
+
+.half-col ul {
+    list-style: none;
+    padding-left: 7px;
+}
+
+.half-col li {
+    overflow: hidden;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    z-index: 12;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked input[type=checkbox]:focus {
+    outline: none !important;
+    cursor: pointer;
+}
+
+input[type=checkbox]+.lbl {
+    position: relative;
+    z-index: 11;
+    display: inline-block;
+    margin: 0;
+    line-height: 20px;
+    min-height: 14px;
+    min-width: 14px;
+    font-weight: normal;
+}
+
+input[type=checkbox]+.lbl.padding-16::before {
+    margin-right: 16px;
+}
+
+input[type=checkbox]+.lbl.padding-12::before {
+    margin-right: 12px;
+}
+
+input[type=checkbox]+.lbl.padding-8::before {
+    margin-right: 8px;
+}
+
+input[type=checkbox]+.lbl.padding-4::before {
+    margin-right: 4px;
+}
+
+input[type=checkbox]+.lbl.padding-0::before {
+    margin-right: 0px;
+}
+
+input[type=checkbox]+.lbl::before {
+    font-family: fontAwesome;
+    font-weight: normal;
+    font-size: 11px;
+    color: #2091cf;
+    content: "\a0";
+    background-color: #FAFAFA;
+    border: 1px solid #CCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    height: 13px;
+    line-height: 13px;
+    min-width: 13px;
+    margin-right: 1px;
+    margin-top: -5px;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked+.lbl::before {
+    display: inline-block;
+    cursor: pointer;
+    content: '\f00c';
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+}
+
+input[type=checkbox]:hover+.lbl::before,
+input[type=checkbox]+.lbl:hover::before {
+    border-color: #1c7aad;
+    cursor: pointer;
+}
+
+input[type=checkbox]:active+.lbl::before,
+input[type=checkbox]:checked:active+.lbl::before {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}; 
+
+
+
+
+.searchTopicInput_container input[name='searchTopicInput'] {
+    width: 95%; 
+    height: 3em;
+    text-indent: .5em;
+    border: .1em solid #eee;
+    border-radius:4px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.searchTopicInput_container input[name='searchTopicInput']:focus{
+    outline: none; 
+}
+
+.searchTopicInput_container {
+
+    position: relative;
+    &__icon {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 16px;
+        color: #3d5170;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+
+    }
+
+
+}

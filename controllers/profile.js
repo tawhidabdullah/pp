@@ -5,8 +5,8 @@ const validateProfileInput = require("../validation/profile");
 exports.addOrUpdateProfile = (req, res) => {
   console.log(req.body.handle); 
   console.log(req.body.mobile); 
-  // bringin the validation items
-  const { errors, isValid } = validateProfileInput(req.body);
+  // bringin the validation items     
+  const { errors, isValid } = validateProfileInput(req.body); 
   // check the validation
   if (!isValid) {
     // REturn any errors with 400 stauts

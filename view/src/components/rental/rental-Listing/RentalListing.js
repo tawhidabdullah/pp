@@ -1,39 +1,46 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchRentals } from "../../../actions/rentalAction";
 import RentalList from "./RentalList";
+import ForumFilterListing from "./ForumFilterListing";
+
 
 
 
 // IMPORT CSS
 import "../../../styles/rental/_rentalListing.scss";
-
+import "../../../styles/forum/_TopicForum_container.scss"
 
 class RentalListing extends Component {
 
-    componentWillMount(){
-        this.props.dispatch(fetchRentals()); 
+    componentWillMount() {
+        this.props.dispatch(fetchRentals());
     }
     render() {
         return (
 
-        <div className='container' style={{
-            paddingTop: "80px"
-        }}>
-        <section id='rentalListing'>
-            <h1 className='page-title'>All The Rentals</h1>
-           <RentalList rentals={this.props.rentals} />
-        </section>
-        </div>
+            <div className='container' style={{
+                paddingTop: "80px"
+            }}>
+                <section id='rentalListing'>
+                    <h1 className='page-title'>Problems and programming </h1>
+                    <div className='TopicForum_container'>
+                            <ForumFilterListing />
+                        <div className='TopicForum_container-topics'>
+                            <RentalList rentals={this.props.rentals} />
+                        </div>
+                    </div>
+                </section>
+            </div>
         )
     }
-}; 
+};
 
 const mapStateToProps = (state) => {
     return {
         rentals: state.rentals.data
     }
-}; 
+};
 
 
 export default connect(mapStateToProps)(RentalListing); 
