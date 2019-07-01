@@ -9,10 +9,7 @@ const userSchema = new Schema({
   avatar: String,
   date: {type: Date, default: Date.now},
   isAdmin: {type: Boolean, default: false},
-  stripeCustomerId: String,
-  revenue: Number,
-  bookings: [{type: Schema.Types.ObjectId, ref: 'bookings'}],
-  rentals: [{type: Schema.Types.ObjectId, ref: 'rentals'}]
+  questions: [{type: Schema.Types.ObjectId, ref: 'questions'}]
 });
 
 // with user schema , load the user model for User collection

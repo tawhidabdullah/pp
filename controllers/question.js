@@ -1,50 +1,49 @@
-const Rental = require("../models/rental");
+const Question = require("../models/question");
 const User = require("../models/user");
 
 // importing validation
-const validateRentalsInput = require("../validation/rental");
-const validateupdateRentalInput = require("../validation/updateRental");
+const validateQuestionInput = require("../validation/question");
+const validateUpdateQuestionInput = require("../validation/updateQuestion");
 
 // importing mongoose error  
-const mongooseError = require("../helpers/mongoose")   
+const mongooseError = require("../helpers/mongoose");     
 
 
 exports.get_single_question_by_id = (req, res) => {
-    const rentalId = req.params.id; 
+    const questionId = req.params.id; 
 
-    Rental.findById(rentalId)
+    Question.findById(questionId)
         .populate("user", 'name -_id avatar')
-        .populate("bookings", "startAt endAt -_id")
-        .exec((err, rental) => {
+        .exec((err, question) => {
             if (err) {
                 res.status(404).send({
                     errors: [{
-                        title: "Rental Error!"
+                        title: "Question Error!"
                     }, {
-                        detail: "Could not found Rental!"
+                        detail: "Could not found Question!"
                     }]
                 })
             }
-            return res.json(rental);
+            return res.json(question);
         })
 };
 
 exports.getimgofAQuestion = (req,res) => {
-    const rentalId = req.params.id; 
+    const questionId = req.params.id; 
    
-    Rental.findById(rentalId)
+    Question.findById(questionId)
     .select('image')
-        .exec((err, rental) => {
+        .exec((err, question) => {
             if (err) {
                 res.status(404).send({
                     errors: [{
-                        title: "Rental Error!"
+                        title: "Question Error!"
                     }, {
-                        detail: "Could not found Rental!"
+                        detail: "Could not found Question!"
                     }]
                 })
             }
-            return res.json(rental.image);
+            return res.json(question.image);
         })
 }
 
@@ -52,21 +51,21 @@ exports.getimgofAQuestion = (req,res) => {
 exports.get_single_question_by_id_verify_user = (req, res) => {
     const user = req.user.id;
 
-    Rental.findById(req.params.id)
+    Question.findById(req.params.id)
         .populate('user')
-        .exec((err, rental) => {
+        .exec((err, question) => {
             if (err) {
                 return res.status(422).send({
                     errors: mongooseError.normalizeMongooseError(err.errors)
                 })
             };
 
-            if (rental.user._id.toString() !== user) {
+            if (question.user._id.toString() !== user) {
                 res.status(404).send({
                     errors: [{
                         title: "Invalid User!"
                     }, {
-                        detail: "You are not the owner of this rental!"
+                        detail: "You are not the owner of this question!"
                     }]
                 })
             };
@@ -84,30 +83,29 @@ exports.getQuestion_OR_getQuestionsByQueryCity = (req, res) => {
     const query = city ? {  
         city: city.toLowerCase()
     } : {};
-    Rental.find(query)
+    Question.find(query)
         .populate('user')
-        .select('-bookings') 
-        .exec((err, foundRentals) => {
+        .exec((err, foundQuestions) => {
             if (err) {
                 return res.status(404).send({
                     errors: [{
-                        title: "Rental Error!"
+                        title: "Question Error!"
                     }, {
-                        detail: "Something went wrong for searching rental by city!"
+                        detail: "Something went wrong for searching question by city!"
                     }]
                 })
             }
-            if (city && foundRentals.length === 0) {
+            if (city && foundQuestions.length === 0) {
                 return res.status(404).send({
                     errors: [{
-                        title: "no rentals Found!"
+                        title: "no questions Found!"
                     }, {
-                        detail: `There are no rentals for the city ${city}`
+                        detail: `There are no questions for the city ${city}`
                     }]
                 })
             }
 
-            return res.json(foundRentals);
+            return res.json(foundQuestions);
 
         })
 
@@ -121,7 +119,7 @@ exports.createQuestion = (req, res) => {
     const {
         errors,
         isValid
-    } = validateRentalsInput(req.body);
+    } = validateQuestionInput(req.body);
 
     let image = req.file;
 
@@ -139,38 +137,30 @@ exports.createQuestion = (req, res) => {
 
     const {
         city,
-        street,
         title,
         category,
-        shared,
-        bedrooms,
-        description,
-        dailyRate
+        description
     } = req.body;
 
     const user = req.user.id;
-    const rental = new Rental({
+    const question = new Question({
         city,
-        street,
         title,
         category,
         image: imgUrl,
-        shared,
-        bedrooms,
-        description,
-        dailyRate: parseInt(dailyRate)
+        description
     });
 
-    rental.user = user;
+    question.user = user;
 
-    rental.save((err, newRental) => {
+    question.save((err, newQuestion) => {
         if (err) {
             console.log(err);
             return res.status(404).send({
                 errors: [{
-                    title: "Rental Error!"
+                    title: "Question Error!"
                 }, {
-                    detail: "Something went wrong while saving the rental!"
+                    detail: "Something went wrong while saving the question!"
                 }]
             })
         }
@@ -179,63 +169,46 @@ exports.createQuestion = (req, res) => {
             _id: user
         }, {
                 $push: {
-                    rentals: newRental
+                    questions: newQuestion
                 }
             }, () => { });
 
-        return res.json(newRental);
+        return res.json(newQuestion);
     })
 };
 
 
 exports.deleteQuestion = (req, res) => {
     const user = req.user.id;
-    Rental.findById(req.params.id)
+    Question.findById(req.params.id)
         .populate("user", '_id')
-        .populate({
-            path: "bookings",
-            select: "startAt",
-            match: {
-                startAt: {
-                    $gt: new Date()
-                }
-            }
-        })
-        .exec((err, rental) => {
+        .exec((err,  question) => {
             if (err) {
                 return res.status(422).send({
-                    errors: "something went wrong from controller/rental"
+                    errors: "something went wrong from controller/ question"
                 })
             }
 
-            if (rental.user._id.toString() !== user) {
+            if ( question.user._id.toString() !== user) {
                 return res.status(404).send({
                     errors: [{
                         title: "Invalid User",
-                        detail: "You are not rental owner!"
+                        detail: "You are not  question owner!"
                     }]
                 });
             }
 
-            if (rental.bookings.length > 0) {
-                return res.status(404).send({
-                    errors: [{
-                        title: "Active Bookings!",
-                        detail: "Cannot Delete rental with active bookings!"
-                    }]
-                });
-            }
 
-            rental.remove((err) => {
+            question.remove((err) => {
                 if (err) {
                     return res.status(422).send({
-                        errors: "something went wrong from controller/rental after removing rental!"
+                        errors: "something went wrong from controller/question after removing rental!"
                     })
                 }
             });
 
             return res.json({
-                'status': "rental deleted"
+                'status': " question deleted"
             })
 
 
@@ -245,16 +218,16 @@ exports.deleteQuestion = (req, res) => {
 exports.manageQuestions = (req, res) => {
     const user = req.user.id;
 
-    Rental.where({
+    Question.where({
         user
     })
-        .exec((err, rentals) => {
+        .exec((err,  questions) => {
             if (err) {
                 return res.status(422).send({
-                    errors: "something went wrong from controller/rental manging rentals!"
+                    errors: "something went wrong from controller/ question manging rentals!"
                 })
             }
-            return res.json(rentals);
+            return res.json( questions);
         });
 };
 
@@ -262,14 +235,14 @@ exports.manageQuestions = (req, res) => {
 exports.updateQuestion = (req, res) => {
    
    
-    const rentalBody = Object.assign({},req.body); 
+    const  questionBody = Object.assign({},req.body); 
 
     let image = req.file;
 
     const {
         errors,
         isValid
-    } = validateupdateRentalInput(rentalBody);
+    } = validateUpdateQuestionInput( questionBody);
 
     
     if (!image) {
@@ -282,40 +255,40 @@ exports.updateQuestion = (req, res) => {
     }
 
 
-    let rentalData  = req.body;
+    let  questionData  = req.body;
 
     let imgUrl = image.path;
 
     if(imgUrl){
-        rentalData = {
+        questionData = {
             image: imgUrl
         }; 
     }; 
 
 
     const user = req.user.id;
-    const rentalId = req.params.id;
+    const  questionId = req.params.id;
 
-    Rental.findById(rentalId)
+    Question.findById( questionId)
         .populate("user")
-        .exec((err, rental) => {
+        .exec((err,  question) => {
             if (err) {
                 return res.status(422).send({
                     errors: mongooseError.normalizeMongooseError(err.errors)
                 }); 
             };
-            if (rental.user.id !== user) {
+            if (question.user.id !== user) {
                 return res.status(404).send({
                     errors: [{
                         title: "Invalid User",
-                        detail: "You are not rental owner!"
+                        detail: "You are not question owner!"
                     }]
                 });
             };
 
-            rental.set(rentalData);
+             question.set(questionData);
 
-            rental.save((err => {
+             question.save((err => {
                 if (err) {
                     return res.status(422).send({
                         errors: mongooseError.normalizeMongooseError(err.errors)
@@ -323,7 +296,7 @@ exports.updateQuestion = (req, res) => {
                 };
             }));
 
-            res.status(200).send(rental);
+            res.status(200).send(question);
         })
 };
 

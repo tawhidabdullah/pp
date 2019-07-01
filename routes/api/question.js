@@ -1,7 +1,6 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
-const Rental = require("../../models/rental");
 
 
 // import rental controllers 
