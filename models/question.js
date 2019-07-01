@@ -11,6 +11,6 @@ const questionSchema = new Schema({
     user: {type: Schema.Types.ObjectId , ref: 'users'}
 });
 
-// with rental schema , load the rental model for question collection
+// with question schema , load the question model for question collection
 const Question = mongoose.model("rentals", questionSchema);
 module.exports = Question;
