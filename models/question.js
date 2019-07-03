@@ -13,4 +13,5 @@ const questionSchema = new Schema({
 
 // with question schema , load the question model for question collection
 const Question = mongoose.model("rentals", questionSchema);
-module.exports = Question;
+module.exports = Question;     
+// get a life 
