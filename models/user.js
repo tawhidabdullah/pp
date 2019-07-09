@@ -36,3 +36,4 @@ const userSchema = new Schema({
 const User = mongoose.model("users", userSchema);
 module.exports = User;
 // can i create an app which will be used by 1000 of users in the future ?
+// hola man
